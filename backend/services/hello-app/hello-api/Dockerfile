@@ -5,15 +5,18 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the project files
-COPY hello-api.csproj ./
+COPY hello-api/hello-api.csproj ./hello-api/
 
 # Restore the dependencies
+WORKDIR /src/hello-api
 RUN dotnet restore
 
 # Copy the rest of the source code
-COPY . ./
+WORKDIR /src
+COPY hello-api/. ./hello-api/
 
 # Build the application
+WORKDIR /src/hello-api
 RUN dotnet publish -c Release -o out
 
 # Use the official .net runtime image to run the application
