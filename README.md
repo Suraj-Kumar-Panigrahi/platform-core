@@ -4,7 +4,6 @@ A modular, full-stack platform designed to showcase modern architecture patterns
 
 ## 🎯 Goals
 
-- Showcase Staff Engineer / Architect-level thinking
 - Demonstrate reusable patterns and scalable services
 - Integrate AI features into business apps
 - Use infrastructure-as-code and GitOps workflows
