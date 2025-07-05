@@ -32,8 +32,8 @@ jobs:
       - name: Restore dependencies
         run: | 
           dotnet restore hello-api/hello-api.csproj
-          dotnet restore hello-api.tests/hello-api.tests.csproj
-      
+          dotnet restore hello-api-tests/hello-api-tests.csproj
+
       - name: Build the project
         run: |
           dotnet build hello-api/hello-api.csproj --configuration Release --no-restore
