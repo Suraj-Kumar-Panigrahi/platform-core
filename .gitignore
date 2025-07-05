@@ -1,0 +1,45 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / VS Code / VS specific
+.vscode/
+.idea/
+.vs/
+
+# Build logs
+*.log
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Auto-generated files
+Generated\ Files/
+
+# Docker artifacts
+*.pid
+*.iml
+
+# Node/npm if used in frontend
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+
+# Environment & secrets
+.env
+.env.*
+*.secrets.json
+secrets.json
+
+# Others
+*.tgz
+*.zip
+*.gz

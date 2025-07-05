@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  hello-api:
+    image: hello-api:latest
+    build:
+      context: ./backend/services/hello-app/hello-api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development

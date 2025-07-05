@@ -1,0 +1,48 @@
+name: hello-api-build
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/services/hello-app/**'
+      - ".github/workflows/hello-api-build.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'backend/services/hello-app/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: backend/services/hello-app/hello-api
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: | 
+          dotnet restore hello-api/hello-api.csproj
+          dotnet restore hello-api.tests/hello-api.tests.csproj
+      
+      - name: Build the project
+        run: |
+          dotnet build hello-api/hello-api.csproj --configuration Release --no-restore
+          dotnet build hello-api.tests/hello-api.tests.csproj --configuration Release --no-restore
+      
+      - name: Run tests
+        run: |
+          dotnet test hello-api.tests/hello-api.tests.csproj --configuration Release --no-build --verbosity normal
+      
+      - name: Build Docker image
+        run: |
+          docker build -t hello-api:latest -f hello-api/Dockerfile .
