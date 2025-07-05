@@ -19,7 +19,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend/services/hello-app/hello-api
+        working-directory: backend/services/hello-app/
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
